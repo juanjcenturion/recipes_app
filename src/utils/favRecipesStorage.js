@@ -15,8 +15,7 @@ export const addRecipeToFav = (recipeId) => {
 }
 
 export const removeRecipeFromFav = (recipeId) => {
-    const fav = getFav();
-    fav = fav.filter(recipe => recipe.id !== recipeId)
-
-    localStorage.setItem(FAV_KEY, JSON.stringify(fav))
-}
+    let fav = getFav();
+    fav = fav.filter(recipe => recipe.id !== recipeId);
+    localStorage.setItem(FAV_KEY, JSON.stringify(fav));
+};

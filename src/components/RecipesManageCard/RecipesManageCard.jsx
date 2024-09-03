@@ -74,8 +74,8 @@ export default function RecipesManageCard({ onAddRecipe }) {
                         <label htmlFor="floating_imgurl" className="peer-focus:font-bold absolute text-md text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-red-600 peer-focus:dark:text-red-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-100 peer-focus:-translate-y-6">Url de imagen</label>
                     </div>
                     <div className="grid grid-cols-12">
-                        <div className="col-span-12 mx-auto mt-12">
-                            <button type="submit" className="text-white px-36 lg:px-80 bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm py-2.5 text-center ">Agregar Receta</button>
+                        <div className="col-span-12 flex justify-center w-full mt-12">
+                            <button type="submit" className="text-white w-full mx-2 bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm py-2.5 text-center ">Agregar Receta</button>
                         </div>
                     </div>
                 </form>

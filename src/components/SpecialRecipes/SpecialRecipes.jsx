@@ -1,4 +1,5 @@
 import FastRecipes from "../FastRecipes/FastRecipes"
+import FavRecipes from "../FavRecipes/FavRecipes";
 
 //Examples
 const recipes = [
@@ -20,10 +21,13 @@ export default function SpecialRecipes() {
                     </div>
                     <FastRecipes/>
                 </div>
-                <div className="col-span-12 mr-4 ml-4 flex justify-center rounded-xl shadow-xl bg-white lg:col-span-5">
-                    <h1 className=" font-bold py-5 text-2xl uppercase text-gray-400" >
-                        Favoritas    
-                    </h1>
+                <div className="col-span-12 mb-12 mr-4 ml-4 rounded-xl shadow-xl bg-white lg:mb-0 lg:col-span-5">
+                    <div className="flex justify-center">
+                        <h1 className="font-bold uppercase py-5 text-2xl text-gray-400 " >
+                            Favoritas
+                        </h1>
+                    </div>
+                    <FavRecipes/>
                 </div>
             </div>
         </section>

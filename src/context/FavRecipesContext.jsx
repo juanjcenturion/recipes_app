@@ -3,6 +3,7 @@ import { getFav, addRecipeToFav, removeRecipeFromFav } from "../utils/favRecipes
 
 const FavContext = createContext();
 
+
 export const FavProvider = ({ children }) => {
     const [fav, setFav] = useState(getFav());
 
@@ -25,4 +26,4 @@ export const FavProvider = ({ children }) => {
     )
 }
 
-export const useFav = () => useContext(FavContext)
+export const useFav = () => {return useContext(FavContext)}
