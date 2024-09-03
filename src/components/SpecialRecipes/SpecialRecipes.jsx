@@ -1,5 +1,12 @@
 import FastRecipes from "../FastRecipes/FastRecipes"
 
+//Examples
+const recipes = [
+    { id: 1, name: 'Fideos con papas', description: 'Deliciosa receta de fideos con papas.' },
+    { id: 2, name: 'Receta 2', description: 'Descripción de la receta 2.' },
+    { id: 3, name: 'Receta 3', description: 'Descripción de la receta 3.' },
+    { id: 4, name: 'Receta 3', description: 'Descripción de la receta 3.' },
+];
 
 export default function SpecialRecipes() {
     return (

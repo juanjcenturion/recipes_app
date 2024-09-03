@@ -12,7 +12,7 @@ export default function FastRecipes() {
     return (
         <div className="grid grid-cols-12 mx-4 p-4 min-h-[750px] max-h-[750px] overflow-auto">
             {recipes.map((recipe) => (
-                <RecipeItem recipe={recipe}/>
+                <RecipeItem key={recipe.id} recipe={recipe}/>
             ))}
         </div>
     );

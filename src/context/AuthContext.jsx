@@ -2,43 +2,59 @@ import { createContext, useState, useContext, useEffect } from "react";
 
 export const AuthContext = createContext();
 
+export const useAuth = () => {
+    return useContext(AuthContext)
+}
+
 export const AuthProvider = ({children }) => {
     const [user, setUser] = useState(null);
-    
-    useEffect(() => {
-        const storedUser = sessionStorage.getItem('user');
-        if (storedUser) {
-            setUser(JSON.parse(storedUser));
-        };
-    }, []);
+    const [isAuth, setIsAuth] = useState(false)
 
-    const login = (userData) => {
-        sessionStorage.setItem('user', JSON.stringify(userData));
-        setUser(userData);
+    useEffect(() => {
+        const userSession = sessionStorage.getItem('session');
+        if (userSession) {
+            setUser(JSON.parse(userSession));
+            setIsAuth(true);
+        }
+        console.log("isAuth después de setearse:", isAuth);
+    }, [isAuth]);
+
+    const register = (username, password) => {
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const existentUser = users.find(u => u.username == username);
+
+        if (existentUser) {
+            throw new Error('El usuario ya existe.')
+        }
+
+        const newUser = {username, password}
+        users.push(newUser)
+        localStorage.setItem('users', JSON.stringify(users))
+    }
+
+    const login = (username, password) => {
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const findUser = users.find(u => u.username == username && u.password == password)
+
+        if (!findUser) {
+            throw new Error('Credenciales Incorrectas.')
+        }
+
+        sessionStorage.setItem('session', JSON.stringify(findUser));
+        setUser(findUser);
+        setIsAuth(true)
+
     }
 
     const logout = () => {
-        sessionStorage.removeItem('user')
-        setUser(null)
+        sessionStorage.removeItem('session');
+        setUser(null);
+        setIsAuth(false);
+        window.location.replace('/')
     }
 
-    const signUp = (username, password) => {
-        const users = JSON.parse(localStorage.getItem('users')) || {};
-
-        if (users[username]) {
-            throw new Error('El nombre de usuario ya existe. Por Favor, elige otro. ')
-        }
-
-        users[username] = password;
-
-        localStorage.setItem('users', JSON.stringify(users))
-
-        login({ username })
-
-    }
-
-    return(
-        <AuthContext.Provider value={{user, login, logout, signUp}}>
+    return (
+        <AuthContext.Provider value={{ isAuth, user, register, login, logout }}>
             {children}
         </AuthContext.Provider>
     )
